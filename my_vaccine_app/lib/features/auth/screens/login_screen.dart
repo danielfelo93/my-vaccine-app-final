@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_vaccine_app/features/auth/screens/providers/auth_provider.dart';
+import 'package:my_vaccine_app/features/auth/screens/providers/login_form_provider.dart';
 import 'package:my_vaccine_app/features/shared/widgets/custom_filled_button.dart';
 import 'package:my_vaccine_app/features/shared/widgets/custom_text_form_field.dart';
+
 
 
 class LoginScreen extends StatelessWidget {
@@ -21,17 +25,17 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox( height: 80 ),
+                const SizedBox( height: 10 ),
                 // Icon Banner
                 const Icon( 
                   Icons.production_quantity_limits_rounded, 
                   color: Colors.white,
                   size: 100,
                 ),
-                const SizedBox( height: 80 ),
+                const SizedBox( height: 10 ),
     
                 Container(
-                  height: size.height - 260, // 80 los dos sizebox y 100 el ícono
+                  height: size.height - 10, // 80 los dos sizebox y 100 el ícono
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: scaffoldBackgroundColor,
@@ -47,11 +51,32 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class _LoginForm extends StatelessWidget {
+class _LoginForm extends ConsumerWidget {
+
   const _LoginForm();
 
+  void showSnackbar( BuildContext context, String message ) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message))
+    );
+  }
+
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final loginForm = ref.watch(loginFormProvider);
+    ref.listen(authProvider, (previous, next) { 
+        if(next.errorMessage!.isEmpty) return;
+        showSnackbar(context, next.errorMessage!);
+
+    });
+    // ref.listen(authProvider, (previous, next) {
+    //   if ( next.errorMessage.isEmpty ) return;
+    //   showSnackbar( context, next.errorMessage );
+    // });
+
 
     final textStyles = Theme.of(context).textTheme;
 
@@ -63,15 +88,23 @@ class _LoginForm extends StatelessWidget {
           Text('Login', style: textStyles.titleLarge ),
           const SizedBox( height: 90 ),
 
-          const CustomTextFormField(
+          CustomTextFormField(
             label: 'Correo',
             keyboardType: TextInputType.emailAddress,
+            onChanged: ref.read(loginFormProvider.notifier).onEmailChanged,
+            errorMessage: loginForm.isFormPosted ?
+               loginForm.email.errorMessage 
+               : null,
           ),
           const SizedBox( height: 30 ),
 
-          const CustomTextFormField(
+          CustomTextFormField(
             label: 'Contraseña',
             obscureText: true,
+            onChanged: ref.read(loginFormProvider.notifier).onPasswordChanged,
+            errorMessage: loginForm.isFormPosted ?
+               loginForm.password.errorMessage 
+               : null,
           ),
     
           const SizedBox( height: 30 ),
@@ -83,7 +116,7 @@ class _LoginForm extends StatelessWidget {
               text: 'Ingresar',
               buttonColor: Colors.black,
               onPressed: (){
-
+                ref.read(loginFormProvider.notifier).onSubmitted();
               },
             )
           ),

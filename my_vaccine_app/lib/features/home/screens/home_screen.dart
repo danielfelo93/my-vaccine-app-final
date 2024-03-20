@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: Text('Home'),
       ),
-      body: Text('Register'),
+      body: Center(
+        child: Text('Home Screen'),
+      ),
     );
   }
 }
