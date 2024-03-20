@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
+import 'package:my_vaccine_app/features/auth/domain/entities/user_model.dart';
 import 'package:my_vaccine_app/features/auth/screens/providers/auth_provider.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/input/email.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/input/password.dart';
@@ -21,13 +22,14 @@ class LoginFormState {
   final bool isValid;
   final Email email;
   final Password password;
-
+  final User? user;
   LoginFormState(
       {this.isPosting = false,
       this.isFormPosted = false,
       this.isValid = false,
       this.email = const Email.pure(),
-      this.password = const Password.pure()});
+      this.password = const Password.pure(),
+      this.user});
 
   LoginFormState copyWith({
     bool? isPosting,
@@ -35,6 +37,7 @@ class LoginFormState {
     bool? isValid,
     Email? email,
     Password? password,
+    User? user,
   }) {
     return LoginFormState(
       isPosting: isPosting ?? this.isPosting,
@@ -42,17 +45,18 @@ class LoginFormState {
       isValid: isValid ?? this.isValid,
       email: email ?? this.email,
       password: password ?? this.password,
+      user: user ?? this.user,
     );
   }
 
   @override
   String toString() {
-    return 'LoginFormState(isPosting: $isPosting, isFormPosted: $isFormPosted, isValid: $isValid, email: $email, password: $password)';
+    return 'LoginFormState(isPosting: $isPosting, isFormPosted: $isFormPosted, isValid: $isValid, email: $email, password: $password, user: $user)';
   }
 }
 
 class LoginFormNotifier extends StateNotifier<LoginFormState> {
-   final Function(String, String) loginUserCallback;
+   final Future<User?>  Function(String, String) loginUserCallback;
 
   LoginFormNotifier({
     required this.loginUserCallback,
@@ -80,9 +84,9 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
 
     state = state.copyWith(isPosting: true);
 
-    await loginUserCallback( state.email.value, state.password.value );
+    var userResponse= await loginUserCallback( state.email.value, state.password.value );
 
-    state = state.copyWith(isPosting: false);
+    state = state.copyWith(isPosting: false, user: userResponse);
   }
 
   _touchEveryField() {

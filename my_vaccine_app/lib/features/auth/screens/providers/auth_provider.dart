@@ -13,7 +13,7 @@ final authProvider =
 class AuthNotifier extends StateNotifier<AuthState> {
   final AuthRepository authRepository;
   AuthNotifier({required this.authRepository}) : super(AuthState());
-  void loginUser(String email, String password) async {
+  Future<User?> loginUser(String email, String password) async {
     //  state = state.copyWith(AuthStatus.checking, null, null);
     //  final user = await AuthRepositoryImpl().login(email, password);
     //  if(user != null){
@@ -21,10 +21,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
     //  }else{
     //    state = state.copyWith(AuthStatus.unauthenticated, null, 'Invalid credentials');
     //  }
-    await Future.delayed(Duration(seconds: 2));
     try {
       final user = await authRepository.login(email, password);
       _setLoggedUser(user);
+      return user;
     } catch (e) {
       await logout('Invalid credentials');
     }
