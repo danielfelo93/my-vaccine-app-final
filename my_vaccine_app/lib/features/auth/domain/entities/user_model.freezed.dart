@@ -21,13 +21,19 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String? get id => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
+  String? get userName => throw _privateConstructorUsedError;
   String? get firstName => throw _privateConstructorUsedError;
-  String? get secondName => throw _privateConstructorUsedError;
-  String? get firstLastName => throw _privateConstructorUsedError;
-  String? get secondLastName => throw _privateConstructorUsedError;
-  List<String>? get roles => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
+  String? get birthdate => throw _privateConstructorUsedError;
+  String? get photo => throw _privateConstructorUsedError;
+  List<dynamic>? get dependents => throw _privateConstructorUsedError;
+  List<dynamic>? get familyGroups => throw _privateConstructorUsedError;
+  List<dynamic>? get vaccineRecords => throw _privateConstructorUsedError;
+  List<dynamic>? get usersAllergies => throw _privateConstructorUsedError;
+  String? get expiration => throw _privateConstructorUsedError;
+  bool? get isSuccess => throw _privateConstructorUsedError;
+  dynamic get errors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +47,19 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String? email,
+      String? userName,
       String? firstName,
-      String? secondName,
-      String? firstLastName,
-      String? secondLastName,
-      List<String>? roles,
-      String? token});
+      String? lastName,
+      String? token,
+      String? birthdate,
+      String? photo,
+      List<dynamic>? dependents,
+      List<dynamic>? familyGroups,
+      List<dynamic>? vaccineRecords,
+      List<dynamic>? usersAllergies,
+      String? expiration,
+      bool? isSuccess,
+      dynamic errors});
 }
 
 /// @nodoc
@@ -64,47 +76,77 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
+    Object? userName = freezed,
     Object? firstName = freezed,
-    Object? secondName = freezed,
-    Object? firstLastName = freezed,
-    Object? secondLastName = freezed,
-    Object? roles = freezed,
+    Object? lastName = freezed,
     Object? token = freezed,
+    Object? birthdate = freezed,
+    Object? photo = freezed,
+    Object? dependents = freezed,
+    Object? familyGroups = freezed,
+    Object? vaccineRecords = freezed,
+    Object? usersAllergies = freezed,
+    Object? expiration = freezed,
+    Object? isSuccess = freezed,
+    Object? errors = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      secondName: freezed == secondName
-          ? _value.secondName
-          : secondName // ignore: cast_nullable_to_non_nullable
+      lastName: freezed == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstLastName: freezed == firstLastName
-          ? _value.firstLastName
-          : firstLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      secondLastName: freezed == secondLastName
-          ? _value.secondLastName
-          : secondLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      roles: freezed == roles
-          ? _value.roles
-          : roles // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      birthdate: freezed == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dependents: freezed == dependents
+          ? _value.dependents
+          : dependents // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      familyGroups: freezed == familyGroups
+          ? _value.familyGroups
+          : familyGroups // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      vaccineRecords: freezed == vaccineRecords
+          ? _value.vaccineRecords
+          : vaccineRecords // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      usersAllergies: freezed == usersAllergies
+          ? _value.usersAllergies
+          : usersAllergies // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      expiration: freezed == expiration
+          ? _value.expiration
+          : expiration // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isSuccess: freezed == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errors: freezed == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -118,13 +160,19 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String? email,
+      String? userName,
       String? firstName,
-      String? secondName,
-      String? firstLastName,
-      String? secondLastName,
-      List<String>? roles,
-      String? token});
+      String? lastName,
+      String? token,
+      String? birthdate,
+      String? photo,
+      List<dynamic>? dependents,
+      List<dynamic>? familyGroups,
+      List<dynamic>? vaccineRecords,
+      List<dynamic>? usersAllergies,
+      String? expiration,
+      bool? isSuccess,
+      dynamic errors});
 }
 
 /// @nodoc
@@ -138,47 +186,77 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
+    Object? userName = freezed,
     Object? firstName = freezed,
-    Object? secondName = freezed,
-    Object? firstLastName = freezed,
-    Object? secondLastName = freezed,
-    Object? roles = freezed,
+    Object? lastName = freezed,
     Object? token = freezed,
+    Object? birthdate = freezed,
+    Object? photo = freezed,
+    Object? dependents = freezed,
+    Object? familyGroups = freezed,
+    Object? vaccineRecords = freezed,
+    Object? usersAllergies = freezed,
+    Object? expiration = freezed,
+    Object? isSuccess = freezed,
+    Object? errors = freezed,
   }) {
     return _then(_$UserImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      secondName: freezed == secondName
-          ? _value.secondName
-          : secondName // ignore: cast_nullable_to_non_nullable
+      lastName: freezed == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstLastName: freezed == firstLastName
-          ? _value.firstLastName
-          : firstLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      secondLastName: freezed == secondLastName
-          ? _value.secondLastName
-          : secondLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      roles: freezed == roles
-          ? _value._roles
-          : roles // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      birthdate: freezed == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dependents: freezed == dependents
+          ? _value._dependents
+          : dependents // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      familyGroups: freezed == familyGroups
+          ? _value._familyGroups
+          : familyGroups // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      vaccineRecords: freezed == vaccineRecords
+          ? _value._vaccineRecords
+          : vaccineRecords // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      usersAllergies: freezed == usersAllergies
+          ? _value._usersAllergies
+          : usersAllergies // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      expiration: freezed == expiration
+          ? _value.expiration
+          : expiration // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isSuccess: freezed == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errors: freezed == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -188,14 +266,23 @@ class __$$UserImplCopyWithImpl<$Res>
 class _$UserImpl implements _User {
   _$UserImpl(
       {this.id,
-      this.email,
+      this.userName,
       this.firstName,
-      this.secondName,
-      this.firstLastName,
-      this.secondLastName,
-      final List<String>? roles,
-      this.token})
-      : _roles = roles;
+      this.lastName,
+      this.token,
+      this.birthdate,
+      this.photo,
+      final List<dynamic>? dependents,
+      final List<dynamic>? familyGroups,
+      final List<dynamic>? vaccineRecords,
+      final List<dynamic>? usersAllergies,
+      this.expiration,
+      this.isSuccess,
+      this.errors})
+      : _dependents = dependents,
+        _familyGroups = familyGroups,
+        _vaccineRecords = vaccineRecords,
+        _usersAllergies = usersAllergies;
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -203,31 +290,67 @@ class _$UserImpl implements _User {
   @override
   final String? id;
   @override
-  final String? email;
+  final String? userName;
   @override
   final String? firstName;
   @override
-  final String? secondName;
+  final String? lastName;
   @override
-  final String? firstLastName;
+  final String? token;
   @override
-  final String? secondLastName;
-  final List<String>? _roles;
+  final String? birthdate;
   @override
-  List<String>? get roles {
-    final value = _roles;
+  final String? photo;
+  final List<dynamic>? _dependents;
+  @override
+  List<dynamic>? get dependents {
+    final value = _dependents;
     if (value == null) return null;
-    if (_roles is EqualUnmodifiableListView) return _roles;
+    if (_dependents is EqualUnmodifiableListView) return _dependents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<dynamic>? _familyGroups;
+  @override
+  List<dynamic>? get familyGroups {
+    final value = _familyGroups;
+    if (value == null) return null;
+    if (_familyGroups is EqualUnmodifiableListView) return _familyGroups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<dynamic>? _vaccineRecords;
+  @override
+  List<dynamic>? get vaccineRecords {
+    final value = _vaccineRecords;
+    if (value == null) return null;
+    if (_vaccineRecords is EqualUnmodifiableListView) return _vaccineRecords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<dynamic>? _usersAllergies;
+  @override
+  List<dynamic>? get usersAllergies {
+    final value = _usersAllergies;
+    if (value == null) return null;
+    if (_usersAllergies is EqualUnmodifiableListView) return _usersAllergies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String? token;
+  final String? expiration;
+  @override
+  final bool? isSuccess;
+  @override
+  final dynamic errors;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, firstName: $firstName, secondName: $secondName, firstLastName: $firstLastName, secondLastName: $secondLastName, roles: $roles, token: $token)';
+    return 'User(id: $id, userName: $userName, firstName: $firstName, lastName: $lastName, token: $token, birthdate: $birthdate, photo: $photo, dependents: $dependents, familyGroups: $familyGroups, vaccineRecords: $vaccineRecords, usersAllergies: $usersAllergies, expiration: $expiration, isSuccess: $isSuccess, errors: $errors)';
   }
 
   @override
@@ -236,17 +359,29 @@ class _$UserImpl implements _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
-            (identical(other.secondName, secondName) ||
-                other.secondName == secondName) &&
-            (identical(other.firstLastName, firstLastName) ||
-                other.firstLastName == firstLastName) &&
-            (identical(other.secondLastName, secondLastName) ||
-                other.secondLastName == secondLastName) &&
-            const DeepCollectionEquality().equals(other._roles, _roles) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
+            (identical(other.photo, photo) || other.photo == photo) &&
+            const DeepCollectionEquality()
+                .equals(other._dependents, _dependents) &&
+            const DeepCollectionEquality()
+                .equals(other._familyGroups, _familyGroups) &&
+            const DeepCollectionEquality()
+                .equals(other._vaccineRecords, _vaccineRecords) &&
+            const DeepCollectionEquality()
+                .equals(other._usersAllergies, _usersAllergies) &&
+            (identical(other.expiration, expiration) ||
+                other.expiration == expiration) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess) &&
+            const DeepCollectionEquality().equals(other.errors, errors));
   }
 
   @JsonKey(ignore: true)
@@ -254,13 +389,19 @@ class _$UserImpl implements _User {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      email,
+      userName,
       firstName,
-      secondName,
-      firstLastName,
-      secondLastName,
-      const DeepCollectionEquality().hash(_roles),
-      token);
+      lastName,
+      token,
+      birthdate,
+      photo,
+      const DeepCollectionEquality().hash(_dependents),
+      const DeepCollectionEquality().hash(_familyGroups),
+      const DeepCollectionEquality().hash(_vaccineRecords),
+      const DeepCollectionEquality().hash(_usersAllergies),
+      expiration,
+      isSuccess,
+      const DeepCollectionEquality().hash(errors));
 
   @JsonKey(ignore: true)
   @override
@@ -279,32 +420,50 @@ class _$UserImpl implements _User {
 abstract class _User implements User {
   factory _User(
       {final String? id,
-      final String? email,
+      final String? userName,
       final String? firstName,
-      final String? secondName,
-      final String? firstLastName,
-      final String? secondLastName,
-      final List<String>? roles,
-      final String? token}) = _$UserImpl;
+      final String? lastName,
+      final String? token,
+      final String? birthdate,
+      final String? photo,
+      final List<dynamic>? dependents,
+      final List<dynamic>? familyGroups,
+      final List<dynamic>? vaccineRecords,
+      final List<dynamic>? usersAllergies,
+      final String? expiration,
+      final bool? isSuccess,
+      final dynamic errors}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
   String? get id;
   @override
-  String? get email;
+  String? get userName;
   @override
   String? get firstName;
   @override
-  String? get secondName;
-  @override
-  String? get firstLastName;
-  @override
-  String? get secondLastName;
-  @override
-  List<String>? get roles;
+  String? get lastName;
   @override
   String? get token;
+  @override
+  String? get birthdate;
+  @override
+  String? get photo;
+  @override
+  List<dynamic>? get dependents;
+  @override
+  List<dynamic>? get familyGroups;
+  @override
+  List<dynamic>? get vaccineRecords;
+  @override
+  List<dynamic>? get usersAllergies;
+  @override
+  String? get expiration;
+  @override
+  bool? get isSuccess;
+  @override
+  dynamic get errors;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

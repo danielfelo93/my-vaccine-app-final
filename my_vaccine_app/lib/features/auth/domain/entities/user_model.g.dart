@@ -8,24 +8,35 @@ part of 'user_model.dart';
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       id: json['id'] as String?,
-      email: json['email'] as String?,
+      userName: json['userName'] as String?,
       firstName: json['firstName'] as String?,
-      secondName: json['secondName'] as String?,
-      firstLastName: json['firstLastName'] as String?,
-      secondLastName: json['secondLastName'] as String?,
-      roles:
-          (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      lastName: json['lastName'] as String?,
       token: json['token'] as String?,
+      birthdate: json['birthdate'] as String?,
+      photo: json['photo'] as String?,
+      dependents: json['dependents'] as List<dynamic>?,
+      familyGroups: json['familyGroups'] as List<dynamic>?,
+      vaccineRecords: json['vaccineRecords'] as List<dynamic>?,
+      usersAllergies: json['usersAllergies'] as List<dynamic>?,
+      expiration: json['expiration'] as String?,
+      isSuccess: json['isSuccess'] as bool?,
+      errors: json['errors'],
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'email': instance.email,
+      'userName': instance.userName,
       'firstName': instance.firstName,
-      'secondName': instance.secondName,
-      'firstLastName': instance.firstLastName,
-      'secondLastName': instance.secondLastName,
-      'roles': instance.roles,
+      'lastName': instance.lastName,
       'token': instance.token,
+      'birthdate': instance.birthdate,
+      'photo': instance.photo,
+      'dependents': instance.dependents,
+      'familyGroups': instance.familyGroups,
+      'vaccineRecords': instance.vaccineRecords,
+      'usersAllergies': instance.usersAllergies,
+      'expiration': instance.expiration,
+      'isSuccess': instance.isSuccess,
+      'errors': instance.errors,
     };

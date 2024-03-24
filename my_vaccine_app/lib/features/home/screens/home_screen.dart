@@ -41,7 +41,7 @@ class HomeScreen extends ConsumerWidget {
                   trailing: CircleAvatar(
                     radius: 30,
                     backgroundImage:
-                        const AssetImage('assets/images/no-image.jpg'),
+                       loginForm.userPhoto?.image ?? const AssetImage('assets/images/no-image.jpg'),
                   ),
                 ),
               ],

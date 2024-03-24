@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:my_vaccine_app/features/auth/domain/datasources/auth_datasources.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/user_model.dart';
 import 'package:my_vaccine_app/features/auth/domain/repositories/auth_repository.dart';
@@ -24,8 +25,13 @@ class AuthRepositoryImpl extends AuthRepository {
     return _datasources.checkStatus(token);
   }
 
-  // @override
-  // Future<UserInfo?> getUserInfoAuth(String token) {
-  //   return _datasources.getUserInfoAuth(token);
-  // }
+  @override
+  Future<User?> getUserInfoAuth() {
+    return _datasources.getUserInfoAuth();
+  }
+  
+  @override
+  Future<Image?> getUserPhotoProfile() {
+    return _datasources.getUserPhotoProfile();
+  }
 }

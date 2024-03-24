@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/user_model.dart';
@@ -23,13 +24,15 @@ class LoginFormState {
   final Email email;
   final Password password;
   final User? user;
+  final Image? userPhoto;
   LoginFormState(
       {this.isPosting = false,
       this.isFormPosted = false,
       this.isValid = false,
       this.email = const Email.pure(),
       this.password = const Password.pure(),
-      this.user});
+      this.user,
+      this.userPhoto});
 
   LoginFormState copyWith({
     bool? isPosting,
@@ -38,6 +41,7 @@ class LoginFormState {
     Email? email,
     Password? password,
     User? user,
+    Image? userPhoto,
   }) {
     return LoginFormState(
       isPosting: isPosting ?? this.isPosting,
@@ -46,6 +50,7 @@ class LoginFormState {
       email: email ?? this.email,
       password: password ?? this.password,
       user: user ?? this.user,
+      userPhoto: userPhoto ?? this.userPhoto,
     );
   }
 
@@ -56,7 +61,7 @@ class LoginFormState {
 }
 
 class LoginFormNotifier extends StateNotifier<LoginFormState> {
-   final Future<User?>  Function(String, String) loginUserCallback;
+   final Future<UserPhotoResult>  Function(String, String) loginUserCallback;
 
   LoginFormNotifier({
     required this.loginUserCallback,
@@ -86,7 +91,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
 
     var userResponse= await loginUserCallback( state.email.value, state.password.value );
 
-    state = state.copyWith(isPosting: false, user: userResponse);
+    state = state.copyWith(isPosting: false, user: userResponse.user, userPhoto: userResponse.photo );
   }
 
   _touchEveryField() {

@@ -58,7 +58,7 @@ class CheckAuthStatusScreen extends StatelessWidget {
     //   print(next);
     //   context.go('/');
     // });
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       context.go('/login');
     });
 
