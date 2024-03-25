@@ -8,6 +8,10 @@ import 'package:my_vaccine_app/config/theme/app_theme.dart';
 import 'package:my_vaccine_app/data/injector.dart';
 import 'package:my_vaccine_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:my_vaccine_app/features/auth/infrastructure/repositories/auth_repository.dart';
+import 'package:my_vaccine_app/features/family_group/domain/datasources/family_group_datasource.dart';
+import 'package:my_vaccine_app/features/family_group/domain/repositories/family_group_repository.dart';
+import 'package:my_vaccine_app/features/family_group/infrastructure/datasources/family_group_datasource_impl.dart';
+import 'package:my_vaccine_app/features/family_group/infrastructure/repositories/family_group_repository_impl.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/services/key_value_storage_service.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/services/key_value_storage_service_impl.dart';
 
@@ -22,6 +26,8 @@ Future<void> main() async {
 
   // Register your dependencies with GetIt
   getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl());
+  getIt.registerSingleton<FamilyGroupDatasource>(FamilyGroupDatasourceImpl());
+  getIt.registerSingleton<FamilyGroupRepository>(FamilyGroupRepositoryImpl());
   getIt.registerSingleton<KeyValueStorageService>(KeyValueStorageServiceImpl());
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -37,7 +43,7 @@ class MyApp extends ConsumerWidget  {
     return  MaterialApp.router(
       title: "My Vaccine App",
        theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green[700]!),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
