@@ -9,4 +9,22 @@ class FamilyGroupRepositoryImpl implements FamilyGroupRepository {
     var  datasource = getIt<FamilyGroupDatasource>();
     return await datasource.fetchFamilyGroups();
   }
+  
+  @override
+  addFamilyGroup(FamilyGroup familyGroup) async{
+   var  datasource = getIt<FamilyGroupDatasource>();
+    return await datasource.addFamilyGroup(familyGroup);
+  }
+  
+  @override
+  updateFamilyGroup(String familyGroupId, FamilyGroup familyGroup) async {
+    var  datasource = getIt<FamilyGroupDatasource>();
+    return await datasource.updateFamilyGroup(familyGroupId, familyGroup);
+  }
+
+  @override
+  deleteFamilyGroup(String familyGroupId) async {
+    var  datasource = getIt<FamilyGroupDatasource>();
+     await datasource.deleteFamilyGroup(familyGroupId);
+  }
 }

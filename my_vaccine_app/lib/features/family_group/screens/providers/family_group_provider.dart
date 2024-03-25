@@ -9,7 +9,22 @@ final familyGroupServiceProvider = Provider<FamilyGroupRepository>((ref) {
   return getIt<FamilyGroupRepository>();
 });
 
-final familyGroupProvider = FutureProvider<List<FamilyGroup>>((ref) async {
-  final service = ref.watch(familyGroupServiceProvider);
+// final familyGroupProvider = FutureProvider<List<FamilyGroup>>((ref) async {
+//   final service = ref.watch(familyGroupServiceProvider);
+//   return service.fetchFamilyGroups();
+// });
+ final familyGroupProvider =FutureProvider.autoDispose<List<FamilyGroup>>((ref) async {
+  final service = ref.read(familyGroupServiceProvider);
   return service.fetchFamilyGroups();
+});
+// Provider para manejar la operación de crear un FamilyGroup
+final addFamilyGroupProvider = FutureProvider.family<void, FamilyGroup>((ref, familyGroup) async {
+  final service = ref.read(familyGroupServiceProvider);
+  await service.addFamilyGroup(familyGroup);
+});
+
+// Provider para manejar la operación de actualizar un FamilyGroup
+final updateFamilyGroupProvider = FutureProvider.family<void, FamilyGroup>((ref, familyGroup) async {
+  final service = ref.read(familyGroupServiceProvider);
+  await service.updateFamilyGroup(familyGroup.familyGroupId, familyGroup);
 });

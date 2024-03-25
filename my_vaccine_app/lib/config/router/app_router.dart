@@ -6,6 +6,7 @@ import 'package:my_vaccine_app/features/auth/screens/login_screen.dart';
 import 'package:my_vaccine_app/features/auth/screens/providers/auth_provider.dart';
 import 'package:my_vaccine_app/features/auth/screens/providers/login_form_provider.dart';
 import 'package:my_vaccine_app/features/auth/screens/register_screen.dart';
+import 'package:my_vaccine_app/features/family_group/screens/family_group_form.dart';
 import 'package:my_vaccine_app/features/family_group/screens/family_groups_list_screen.dart';
 import 'package:my_vaccine_app/features/home/screens/home_screen.dart';
 
@@ -34,6 +35,10 @@ final goRouterProvider = Provider((ref) {
       GoRoute(
         path: '/family-groups',
         builder: (context, state) =>  FamilyGroupsScreen(),
+      ),
+      GoRoute(
+        path: '/family-groups-form',
+        builder: (context, state) =>  FamilyGroupFormScreen(),
       ),
 
       ///* Product Routes

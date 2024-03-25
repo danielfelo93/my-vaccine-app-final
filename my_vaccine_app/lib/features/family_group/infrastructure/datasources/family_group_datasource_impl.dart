@@ -39,4 +39,78 @@ class FamilyGroupDatasourceImpl extends FamilyGroupDatasource {
     }
   }
 
+  @override
+  addFamilyGroup(FamilyGroup familyGroup) async {
+    final KeyValueStorageService keyValueStorageService =
+        getIt<KeyValueStorageService>();
+    try {
+      final String? token =
+          await keyValueStorageService.getValue<String>('token');
+      final response = dio.post('/api/FamilyGroup',
+          data: jsonEncode(familyGroup.toJson()),
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      return response;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw CustomError(
+            e.response?.data['message'] ?? 'Credenciales incorrectas');
+      }
+      if (e.type == DioExceptionType.connectionTimeout) {
+        throw CustomError('Revisar conexión a internet');
+      }
+      throw Exception();
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  updateFamilyGroup(String familyGroupId, FamilyGroup familyGroup) async {
+    final KeyValueStorageService keyValueStorageService =
+        getIt<KeyValueStorageService>();
+    try {
+      final String? token =
+          await keyValueStorageService.getValue<String>('token');
+      final response = dio.put('/api/FamilyGroup/$familyGroupId',
+          data: jsonEncode(familyGroup.toJson()),
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      return response;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw CustomError(
+            e.response?.data['message'] ?? 'Credenciales incorrectas');
+      }
+      if (e.type == DioExceptionType.connectionTimeout) {
+        throw CustomError('Revisar conexión a internet');
+      }
+      throw Exception();
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  deleteFamilyGroup(String familyGroupId) async {
+    final KeyValueStorageService keyValueStorageService =
+        getIt<KeyValueStorageService>();
+    try {
+      final String? token =
+          await keyValueStorageService.getValue<String>('token');
+      final response = dio.delete('/api/FamilyGroup/$familyGroupId',
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      return response;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw CustomError(
+            e.response?.data['message'] ?? 'Credenciales incorrectas');
+      }
+      if (e.type == DioExceptionType.connectionTimeout) {
+        throw CustomError('Revisar conexión a internet');
+      }
+      throw Exception();
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
 }

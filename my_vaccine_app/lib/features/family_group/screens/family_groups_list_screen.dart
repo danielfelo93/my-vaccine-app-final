@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_vaccine_app/features/family_group/screens/providers/family_group_provider.dart';
 import 'package:my_vaccine_app/features/shared/widgets/side_menu.dart';
 
 class FamilyGroupsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.refresh(familyGroupProvider);
     final familyGroups = ref.watch(familyGroupProvider);
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -59,6 +61,10 @@ class FamilyGroupsScreen extends ConsumerWidget {
         loading: () => CircularProgressIndicator(),
         error: (error, stack) => Center(child: Text('Ocurrió un error')),
       ),
-    );
+    
+       floatingActionButton: FloatingActionButton(
+        onPressed: () => context.pushReplacement('/family-groups-form'), // Ruta a tu pantalla de formulario en modo de creación
+        child: Icon(Icons.add),
+      ),);
   }
 }
