@@ -1,53 +1,28 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get_it/get_it.dart';
-import 'package:my_vaccine_app/config/constants/environment.dart';
-import 'package:my_vaccine_app/config/router/app_router.dart';
-import 'package:my_vaccine_app/config/theme/app_theme.dart';
-import 'package:my_vaccine_app/data/injector.dart';
-import 'package:my_vaccine_app/features/auth/domain/repositories/auth_repository.dart';
-import 'package:my_vaccine_app/features/auth/infrastructure/repositories/auth_repository.dart';
-import 'package:my_vaccine_app/features/family_group/domain/datasources/family_group_datasource.dart';
-import 'package:my_vaccine_app/features/family_group/domain/repositories/family_group_repository.dart';
-import 'package:my_vaccine_app/features/family_group/infrastructure/datasources/family_group_datasource_impl.dart';
-import 'package:my_vaccine_app/features/family_group/infrastructure/repositories/family_group_repository_impl.dart';
-import 'package:my_vaccine_app/features/shared/infrastructure/services/key_value_storage_service.dart';
-import 'package:my_vaccine_app/features/shared/infrastructure/services/key_value_storage_service_impl.dart';
 
-Future<void> main() async {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-  await Environment.initEnvironment();
-    await configure(dev.name);
-
-  // Initialize GetIt
-  late final GetIt getIt = GetIt.instance;
-
-  // Register your dependencies with GetIt
-  getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl());
-  getIt.registerSingleton<FamilyGroupDatasource>(FamilyGroupDatasourceImpl());
-  getIt.registerSingleton<FamilyGroupRepository>(FamilyGroupRepositoryImpl());
-  getIt.registerSingleton<KeyValueStorageService>(KeyValueStorageServiceImpl());
-  runApp(const ProviderScope(child: MyApp()));
+void main() {
+  runApp(const MyApp());
 }
 
-class MyApp extends ConsumerWidget  {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-        final appRouter = ref.watch( goRouterProvider );
-
-    return  MaterialApp.router(
-      title: "My Vaccine App",
-       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green[700]!),
-        useMaterial3: true,
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Hello World',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Hello World'),
+        ),
+        body: const Center(
+          child: Text(
+            'Hello, World!',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
       ),
-      debugShowCheckedModeBanner: false,
-      routerConfig: appRouter
     );
   }
 }
