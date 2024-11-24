@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_vaccine_app/features/auth/auth.dart';
-import 'package:my_vaccine_app/features/auth/domain/entities/user_info/user_info.dart';
 import 'package:my_vaccine_app/features/auth/presentation/providers/auth_provider.dart';
+import 'package:my_vaccine_app/features/dependent/screens/dependent_view_screen.dart';
 import 'package:my_vaccine_app/features/family-groups/screens/family-group-screen.dart';
 import 'package:my_vaccine_app/features/home/presentation/screens/home_screen.dart';
+import 'package:my_vaccine_app/features/vaccine-records/screens/vaccine-records-screen.dart';
 
 import 'app_router_notifier.dart';
 
@@ -45,6 +46,16 @@ final goRouterProvider = Provider((ref) {
       GoRoute(
         path: '/family-groups',
         builder: (context, state) => FamilyGroupsScreen(),
+      ),
+
+      GoRoute(
+        path: '/dependencies',
+        builder: (context, state) => DependentsListScreen(),
+      ),
+
+      GoRoute(
+        path: '/vaccination-records',
+        builder: (context, state) => VaccineRecordsScreen(),
       ),
     ],
 

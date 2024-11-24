@@ -51,7 +51,7 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future register(RegisterUserRequest registerUserRequest) async {
-    final url = '/api/Auth/register';
+    const url = '/api/Auth/register';
     try {
       final response = await dio.post(
         url,
@@ -64,8 +64,23 @@ class AuthDataSourceImpl extends AuthDataSource {
         data: registerUserRequest.toJson(),
       );
 
+      // Después de un registro exitoso, intenta hacer el login con las credenciales de registro
+    final email = registerUserRequest.username; // Asume que el email está en el objeto de solicitud
+    final password = registerUserRequest.password; // Asume que la contraseña está en el objeto de solicitud
+
+    // Llamamos al método login para autenticar al usuario inmediatamente
+    final userPhotoResult = await login(email, password); // Login con las credenciales de registro
+
+    // Retorna el resultado del login, que puede incluir el usuario y la foto
+    return userPhotoResult;
+
       
-    } on DioError catch (e) {
+    } on DioException catch (e) {
+      
+      if (e.response?.statusCode == 409) {
+        throw CustomError(
+            e.response?.data['message'] ?? 'Failed to register user');
+      }
       throw Exception('Failed to register user: ${e.response?.data ?? e.message}');
     }
   }
@@ -124,8 +139,6 @@ class AuthDataSourceImpl extends AuthDataSource {
   @override
    Future<Image?> getUserPhotoProfile(String token) async {
     try {
-      if (token == null) throw Exception("Token is null");
-
       final response = await dio.get('/api/auth/get-user-photo-profile',
         options: Options(
           headers: {'Authorization': 'Bearer $token'},

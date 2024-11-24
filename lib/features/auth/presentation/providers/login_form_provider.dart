@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
-import 'package:my_vaccine_app/features/auth/domain/entities/user.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/user_info/user_info.dart';
 import 'package:my_vaccine_app/features/auth/presentation/providers/auth_provider.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/inputs/email.dart';

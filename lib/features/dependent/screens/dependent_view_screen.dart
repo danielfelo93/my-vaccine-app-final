@@ -11,6 +11,8 @@ class DependentsListScreen extends StatelessWidget {
   final keyValueStorageService = KeyValueStorageServiceImpl();
   final token = '';
 
+  DependentsListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -18,10 +20,10 @@ class DependentsListScreen extends StatelessWidget {
     return Scaffold(
       drawer: SideMenu(scaffoldKey: scaffoldKey), //
       appBar: AppBar(
-        title: Text('Dependents'),
+        title: const Text('Dependents'),
           actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () => showAddDialog(context),
           ),
         ],
@@ -51,7 +53,7 @@ class DependentsListScreen extends StatelessWidget {
       //     }
       //   },
       // ),
-      body: Text('DependentsListScreen'),
+      body: const Text('DependentsListScreen'),
     );
   }
 }
@@ -59,34 +61,34 @@ class DependentsListScreen extends StatelessWidget {
 class DependentDetailCard extends StatelessWidget {
   final Dependent dependent;
 
-  DependentDetailCard({required this.dependent});
+  const DependentDetailCard({super.key, required this.dependent});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Icon(Icons.person),
+        leading: const Icon(Icons.person),
         title: Text(dependent.name),
         subtitle: Text('DOB: ${dependent.dateOfBirth}'),
          trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
               onPressed: () {
                 // Acción para actualizar
                 // Por ejemplo: Navigator.pushNamed(context, '/edit-dependent', arguments: dependent);
               },
             ),
             IconButton(
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               onPressed: () {
                 // Acción para eliminar
                 // Puedes mostrar un diálogo de confirmación aquí antes de proceder
               },
             ),
             IconButton(
-              icon: Icon(Icons.medical_services),
+              icon: const Icon(Icons.medical_services),
               onPressed: () {
                 // Acción para ver vacunas
                 // Por ejemplo: Navigator.pushNamed(context, '/dependent-vaccines', arguments: dependent);
@@ -103,13 +105,13 @@ void showAddDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Agregar Nuevo Elemento'),
+        title: const Text('Agregar Nuevo Elemento'),
         content: Form(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(labelText: 'Nombre'),
+                decoration: const InputDecoration(labelText: 'Nombre'),
               ),
               // Otros campos del formulario
             ],
@@ -117,11 +119,11 @@ void showAddDialog(BuildContext context) {
         ),
         actions: <Widget>[
           TextButton(
-            child: Text('Cancelar'),
+            child: const Text('Cancelar'),
             onPressed: () => Navigator.of(context).pop(),
           ),
           TextButton(
-            child: Text('Guardar'),
+            child: const Text('Guardar'),
             onPressed: () {
               // Lógica para guardar la información
             },

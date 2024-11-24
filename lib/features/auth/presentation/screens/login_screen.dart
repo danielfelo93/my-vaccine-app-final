@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(
                       100),
                   image: const DecorationImage(
-                    image: AssetImage('assets/images/My_Vaccine_App_Logo.png'),
+                    image: AssetImage('assets/images/My_Vaccine_App_Logo_Daniel.png'),
                     fit: BoxFit
                         .cover,
                   ),
@@ -48,10 +48,10 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               
-                const SizedBox( height: 40 ),
+                const SizedBox( height: 30 ),
     
                 Container(
-                  height: size.height - 260, // 80 los dos sizebox y 100 el ícono
+                  height: size.height - 250, // 80 los dos sizebox y 100 el ícono
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: scaffoldBackgroundColor,
@@ -87,7 +87,7 @@ class _LoginForm extends ConsumerWidget {
 
     
     ref.listen(authProvider, (previous, next) {
-      if(next?.authStatus == AuthStatus.authenticated) {
+      if(next.authStatus == AuthStatus.authenticated) {
         context.pushReplacement('/home');
       }
       if ( next.errorMessage.isEmpty ) return;
@@ -101,9 +101,9 @@ class _LoginForm extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Column(
         children: [
-          const SizedBox( height: 25 ),
+          const SizedBox( height: 20 ),
           Text('Login', style: textStyles.titleLarge ),
-          const SizedBox( height: 45 ),
+          const SizedBox( height: 25 ),
 
           CustomTextFormField(
             label: 'Correo',
@@ -113,7 +113,7 @@ class _LoginForm extends ConsumerWidget {
                loginForm.email.errorMessage 
                : null,
           ),
-          const SizedBox( height: 30 ),
+          const SizedBox( height: 15 ),
 
           CustomTextFormField(
             label: 'Contraseña',
@@ -125,7 +125,7 @@ class _LoginForm extends ConsumerWidget {
                : null,
           ),
     
-          const SizedBox( height: 30 ),
+          const SizedBox( height: 24 ),
 
           SizedBox(
             width: double.infinity,
@@ -139,7 +139,8 @@ class _LoginForm extends ConsumerWidget {
             )
           ),
 
-          const Spacer( flex: 1 ),
+          //const Spacer( flex: 1 ),
+          //const SizedBox( height: 10 ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -153,6 +154,7 @@ class _LoginForm extends ConsumerWidget {
           ),
 
           const Spacer( flex: 1),
+          //const SizedBox( height: 8 ),
         ],
       ),
     );

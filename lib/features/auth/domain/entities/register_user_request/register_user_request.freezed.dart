@@ -26,8 +26,12 @@ mixin _$RegisterUserRequest {
   String get lastName => throw _privateConstructorUsedError;
   DateTime get birthdate => throw _privateConstructorUsedError;
 
+  /// Serializes this RegisterUserRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RegisterUserRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RegisterUserRequestCopyWith<RegisterUserRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$RegisterUserRequestCopyWithImpl<$Res, $Val extends RegisterUserRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RegisterUserRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$RegisterUserRequestImplCopyWithImpl<$Res>
       $Res Function(_$RegisterUserRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RegisterUserRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,12 +202,14 @@ class _$RegisterUserRequestImpl implements _RegisterUserRequest {
                 other.birthdate == birthdate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, username, password, firstName, lastName, birthdate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RegisterUserRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RegisterUserRequestImplCopyWith<_$RegisterUserRequestImpl> get copyWith =>
@@ -235,8 +245,11 @@ abstract class _RegisterUserRequest implements RegisterUserRequest {
   String get lastName;
   @override
   DateTime get birthdate;
+
+  /// Create a copy of RegisterUserRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RegisterUserRequestImplCopyWith<_$RegisterUserRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

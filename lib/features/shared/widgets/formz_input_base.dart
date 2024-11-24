@@ -11,6 +11,7 @@ abstract class FormzInputBase<T, E> extends FormzInput<T, E> {
     return value != null && value.toString().isNotEmpty ? null : error;
   }
 
+  @override
   E get error;
 
   String? get errorMessage {

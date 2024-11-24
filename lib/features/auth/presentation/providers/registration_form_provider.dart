@@ -8,6 +8,7 @@ import 'package:my_vaccine_app/features/auth/presentation/screens/register/widge
 import 'package:my_vaccine_app/features/auth/presentation/screens/register/widgets/last_name.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/inputs/email.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/inputs/password.dart';
+import 'package:my_vaccine_app/features/shared/infrastructure/inputs/confirmPassword.dart';
 
 final registrationFormProvider = StateNotifierProvider.autoDispose<
     RegistrationFormNotifier, RegistrationFormState>((ref) {
@@ -68,10 +69,11 @@ class RegistrationFormNotifier extends StateNotifier<RegistrationFormState> {
 
   void onPasswordChanged(String value) {
     final password = Password.dirty(value);
-    final confirmPassword = Password.dirty(state.confirmPassword.value);
+    final confirmPassword = ConfirmPassword.dirty(state.confirmPassword.value, password: value);
+    //final confirmPassword = Password.dirty(state.confirmPassword.value);
     state = state.copyWith(
-      password: password,
       confirmPassword: confirmPassword,
+      password: password,
       isValid: Formz.validate([
         state.firstName,
         state.lastName,
@@ -84,7 +86,8 @@ class RegistrationFormNotifier extends StateNotifier<RegistrationFormState> {
   }
 
   void onConfirmPasswordChanged(String value) {
-    final confirmPassword = Password.dirty(value);
+    final confirmPassword = ConfirmPassword.dirty(value, password: state.password.value);
+    //final confirmPassword = ConfirmPassword.dirty(value);
     final password = Password.dirty(state.password.value);
     state = state.copyWith(
       confirmPassword: confirmPassword,
@@ -93,7 +96,7 @@ class RegistrationFormNotifier extends StateNotifier<RegistrationFormState> {
         state.firstName,
         state.lastName,
         state.email,
-        state.password,
+        password,
         confirmPassword,
         state.birthdate
       ]),
@@ -119,6 +122,8 @@ class RegistrationFormNotifier extends StateNotifier<RegistrationFormState> {
     _touchEveryField();
     if (!state.isValid) return;
 
+    //state = state.copyWith(isPosting: true);
+
     final registerUserRequest = RegisterUserRequest(
       username: state.email.value,
       password: state.password.value,
@@ -135,7 +140,7 @@ class RegistrationFormNotifier extends StateNotifier<RegistrationFormState> {
     final lastName = LastName.dirty(state.lastName.value);
     final email = Email.dirty(state.email.value);
     final password = Password.dirty(state.password.value);
-    final confirmPassword = Password.dirty(state.confirmPassword.value);
+    //final confirmPassword = ConfirmPassword.dirty(state.confirmPassword.value);
     final birthdate = Birthdate.dirty(state.birthdate.value);
 
     state = state.copyWith(
@@ -143,10 +148,10 @@ class RegistrationFormNotifier extends StateNotifier<RegistrationFormState> {
       lastName: lastName,
       email: email,
       password: password,
-      confirmPassword: confirmPassword,
+      //confirmPassword: confirmPassword,
       birthdate: birthdate,
       isValid: Formz.validate(
-          [firstName, lastName, email, password, confirmPassword, birthdate]),
+          [firstName, lastName, email, password, birthdate]),
       isFormPosted: true,
     );
   }
@@ -157,9 +162,10 @@ class RegistrationFormState {
   final LastName lastName;
   final Email email;
   final Password password;
-  final Password confirmPassword;
+  final ConfirmPassword confirmPassword;
   final Birthdate birthdate;
   final bool isValid;
+  final bool isPosting;
   final bool isFormPosted;
 
   RegistrationFormState({
@@ -167,9 +173,10 @@ class RegistrationFormState {
     this.lastName = const LastName.pure(),
     this.email = const Email.pure(),
     this.password = const Password.pure(),
-    this.confirmPassword = const Password.pure(),
+    this.confirmPassword = const ConfirmPassword.pure(),
     this.birthdate = const Birthdate.pure(),
     this.isValid = false,
+    this.isPosting = false,
     this.isFormPosted = false,
   });
 
@@ -178,9 +185,10 @@ class RegistrationFormState {
     LastName? lastName,
     Email? email,
     Password? password,
-    Password? confirmPassword,
+    ConfirmPassword? confirmPassword,
     Birthdate? birthdate,
     bool? isValid,
+    bool? isPosting,
     bool? isFormPosted,
   }) {
     return RegistrationFormState(
@@ -191,6 +199,7 @@ class RegistrationFormState {
       confirmPassword: confirmPassword ?? this.confirmPassword,
       birthdate: birthdate ?? this.birthdate,
       isValid: isValid ?? this.isValid,
+      isPosting: isPosting ?? this.isPosting,
       isFormPosted: isFormPosted ?? this.isFormPosted,
     );
   }

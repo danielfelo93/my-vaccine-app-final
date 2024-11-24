@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 const colorSeed = Color(0xff424CB8);
-const scaffoldBackgroundColor = Color(0xFFF8F7F7);
+const scaffoldBackgroundColor = Color.fromARGB(255, 231, 253, 255);
 
 class AppTheme {
 
@@ -29,7 +29,7 @@ class AppTheme {
     ///* Buttons
     filledButtonTheme: FilledButtonThemeData(
       style: ButtonStyle(
-        textStyle: MaterialStatePropertyAll(
+        textStyle: WidgetStatePropertyAll(
           GoogleFonts.montserratAlternates()
             .copyWith(fontWeight: FontWeight.w700)
           )

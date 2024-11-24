@@ -35,10 +35,14 @@ mixin _$UserInfo {
   String? get token => throw _privateConstructorUsedError;
   DateTime? get expiration => throw _privateConstructorUsedError;
   bool? get isSuccess => throw _privateConstructorUsedError;
-  dynamic? get errors => throw _privateConstructorUsedError;
+  dynamic get errors => throw _privateConstructorUsedError;
 
+  /// Serializes this UserInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserInfoCopyWith<UserInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,7 +66,7 @@ abstract class $UserInfoCopyWith<$Res> {
       String? token,
       DateTime? expiration,
       bool? isSuccess,
-      dynamic? errors});
+      dynamic errors});
 }
 
 /// @nodoc
@@ -75,6 +79,8 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +155,7 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
       errors: freezed == errors
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -176,7 +182,7 @@ abstract class _$$UserInfoImplCopyWith<$Res>
       String? token,
       DateTime? expiration,
       bool? isSuccess,
-      dynamic? errors});
+      dynamic errors});
 }
 
 /// @nodoc
@@ -187,6 +193,8 @@ class __$$UserInfoImplCopyWithImpl<$Res>
       _$UserInfoImpl _value, $Res Function(_$UserInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -261,7 +269,7 @@ class __$$UserInfoImplCopyWithImpl<$Res>
       errors: freezed == errors
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
-              as dynamic?,
+              as dynamic,
     ));
   }
 }
@@ -353,7 +361,7 @@ class _$UserInfoImpl implements _UserInfo {
   @override
   final bool? isSuccess;
   @override
-  final dynamic? errors;
+  final dynamic errors;
 
   @override
   String toString() {
@@ -390,7 +398,7 @@ class _$UserInfoImpl implements _UserInfo {
             const DeepCollectionEquality().equals(other.errors, errors));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -409,7 +417,9 @@ class _$UserInfoImpl implements _UserInfo {
       isSuccess,
       const DeepCollectionEquality().hash(errors));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserInfoImplCopyWith<_$UserInfoImpl> get copyWith =>
@@ -438,7 +448,7 @@ abstract class _UserInfo implements UserInfo {
       final String? token,
       final DateTime? expiration,
       final bool? isSuccess,
-      final dynamic? errors}) = _$UserInfoImpl;
+      final dynamic errors}) = _$UserInfoImpl;
 
   factory _UserInfo.fromJson(Map<String, dynamic> json) =
       _$UserInfoImpl.fromJson;
@@ -472,9 +482,12 @@ abstract class _UserInfo implements UserInfo {
   @override
   bool? get isSuccess;
   @override
-  dynamic? get errors;
+  dynamic get errors;
+
+  /// Create a copy of UserInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserInfoImplCopyWith<_$UserInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -489,8 +502,12 @@ mixin _$FamilyGroup {
   List<dynamic>? get dependents => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this FamilyGroup to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FamilyGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FamilyGroupCopyWith<FamilyGroup> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -514,6 +531,8 @@ class _$FamilyGroupCopyWithImpl<$Res, $Val extends FamilyGroup>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FamilyGroup
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -557,6 +576,8 @@ class __$$FamilyGroupImplCopyWithImpl<$Res>
       _$FamilyGroupImpl _value, $Res Function(_$FamilyGroupImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FamilyGroup
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -623,12 +644,14 @@ class _$FamilyGroupImpl implements _FamilyGroup {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, familyGroupId,
       const DeepCollectionEquality().hash(_dependents), name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FamilyGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FamilyGroupImplCopyWith<_$FamilyGroupImpl> get copyWith =>
@@ -657,8 +680,11 @@ abstract class _FamilyGroup implements FamilyGroup {
   List<dynamic>? get dependents;
   @override
   String? get name;
+
+  /// Create a copy of FamilyGroup
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FamilyGroupImplCopyWith<_$FamilyGroupImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

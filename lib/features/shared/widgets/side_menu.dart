@@ -38,8 +38,21 @@ class SideMenuState extends ConsumerState<SideMenu> {
           navDrawerIndex = value;
         });
 
+        //cambiar por un switch case
+        if (value == 0) {
+          context.pushReplacement('/');
+        }
+
+        if (value == 1) {
+          context.pushReplacement('/dependencies');
+        }
+
         if (value == 2) {
           context.pushReplacement('/family-groups');
+        }
+
+        if (value == 3) {
+          context.pushReplacement('/vaccination-records');
         }
 
         widget.scaffoldKey.currentState?.closeDrawer();
@@ -50,14 +63,14 @@ class SideMenuState extends ConsumerState<SideMenu> {
             CircleAvatar(
               radius: 100,
              backgroundImage: profileImage != null
-                  ? profileImage as ImageProvider
-                  : AssetImage('assets/images/no-image.jpg') as ImageProvider,
+                  ? profileImage
+                  : const AssetImage('assets/images/no-image.jpg') as ImageProvider,
             ),
             Positioned(
               bottom: 0,
               right: 0,
               child: IconButton(
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
                 onPressed: () async {
                   await _showImageSourceActionSheet(context);
                   await ref.read(userImageProvider.notifier).uploadImage(authState.token ?? '');
@@ -120,13 +133,13 @@ class SideMenuState extends ConsumerState<SideMenu> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: Icon(Icons.camera),
-              title: Text('Cámara'),
+              leading: const Icon(Icons.camera),
+              title: const Text('Cámara'),
               onTap: () => Navigator.of(context).pop(ImageSource.camera),
             ),
             ListTile(
-              leading: Icon(Icons.photo_album),
-              title: Text('Galería'),
+              leading: const Icon(Icons.photo_album),
+              title: const Text('Galería'),
               onTap: () => Navigator.of(context).pop(ImageSource.gallery),
             ),
           ],

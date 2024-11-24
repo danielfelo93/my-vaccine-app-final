@@ -50,6 +50,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         color: Colors.white,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(15),
+          topRight: Radius.circular(15),
           bottomLeft: Radius.circular(15),
           bottomRight: Radius.circular(15),
         ),
@@ -88,7 +89,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               isDense: true,
               labelText: widget.label,
               hintText: widget.hint,
-              errorText: widget.errorMessage,
+              //errorText: widget.errorMessage,
               suffixIcon: widget.obscureText
                   ? IconButton(
                       icon: Icon(
@@ -107,6 +108,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               border: border,
             ),
           ),
+
+          
           // if (widget.description != null)
           //   Padding(
           //     padding: const EdgeInsets.only(top: 8.0, left: 20.0),
@@ -115,14 +118,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           //       style: TextStyle(color: colors.primary, fontSize: 12),
           //     ),
           //   ),
-          // if (widget.errorMessage != null)
-          //   Padding(
-          //     padding: const EdgeInsets.only(top: 8.0, left: 20.0),
-          //     child: Text(
-          //       widget.errorMessage!,
-          //       style: const TextStyle(color: Colors.red, fontSize: 12),
-          //     ),
-          //   ),
+          if (widget.errorMessage != null)
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Text(
+                widget.errorMessage!,
+                style: const TextStyle(color: Color.fromARGB(255, 134, 66, 62), fontSize: 12),
+              ),
+            ),
         ],
       ),
     );

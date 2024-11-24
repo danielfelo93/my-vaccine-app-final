@@ -20,7 +20,7 @@ class UserInfo with _$UserInfo {
     String? token,
     DateTime? expiration,
     bool? isSuccess,
-    dynamic? errors,
+    dynamic errors,
   }) = _UserInfo;
 
   factory UserInfo.fromJson(Map<String, dynamic> json) => _$UserInfoFromJson(json);

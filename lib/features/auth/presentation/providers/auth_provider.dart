@@ -35,7 +35,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
       response = await authRepository.login(email, password);
 
       if (response.user != null) {
-        _setLoggedUser(response?.user ?? UserInfo());
+        _setLoggedUser(response.user ?? UserInfo());
       }
       // final userPhotoProfile = await authRepository.getUserPhotoProfile(response.user?.token??'' );
       _setuserProfilePhoto(response.user ?? UserInfo(), response.photo);
